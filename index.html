@@ -1,6 +1,6 @@
 <title>ГСК технологии — промышленная водоподготовка и очистка сточных вод</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="ГСК технологии (ранее ООО «БМТ») — инжиниринговая компания полного цикла в промышленной водоподготовке и очистке сточных вод. 40 лет, 5000 установок, баромембранные технологии.">
+<meta name="description" content="ГСК технологии (ранее ООО «БМТ») — инжиниринговая компания полного цикла в промышленной водоподготовке и очистке сточных вод. 5000 установок, баромембранные технологии, специалисты с опытом 10–25 лет.">
 <style>
   /* ============ TOKENS — brand-locked industrial monochrome ============ */
   :root{
@@ -110,7 +110,7 @@
   .chain{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;margin-top:8px}
   .chain .b{flex:1;min-width:120px;border:1px solid var(--line);background:var(--surface);padding:12px 10px;text-align:center;font-size:13px;color:var(--blue);display:flex;align-items:center;justify-content:center}
   .slide.white .chain .b{background:var(--ground)}
-  .chain .b.on{background:var(--blue);color:var(--white);border-color:var(--blue);font-weight:700}
+  .slide .chain .b.on{background:var(--blue);color:var(--white);border-color:var(--blue);font-weight:700}
   .chain .arw{display:flex;align-items:center;color:var(--steel);font-size:18px}
 
   /* ============ PROJECT ROWS ============ */
@@ -170,8 +170,7 @@
   .ticks button{width:16px;height:2px;border:0;padding:0;background:var(--steel);opacity:.5;cursor:pointer;transition:.2s}
   .ticks button.on{opacity:1;width:26px;background:var(--blue)}
   .slide.dark ~ .ticks{}
-  .counter{position:fixed;left:18px;bottom:16px;z-index:50;font-size:12px;letter-spacing:.14em;color:var(--steel);font-variant-numeric:tabular-nums;pointer-events:none;mix-blend-mode:difference;color:#8899a6}
-  .nav{position:fixed;right:18px;bottom:16px;z-index:50;display:flex;gap:8px}
+  .nav{position:fixed;right:18px;bottom:54px;z-index:50;display:flex;flex-direction:column;gap:8px}
   .nav button{width:40px;height:40px;border:1px solid var(--steel);background:rgba(255,255,255,.7);color:var(--blue);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:.15s;backdrop-filter:blur(4px)}
   .nav button:hover{background:var(--blue);color:var(--white);border-color:var(--blue)}
   .nav button:focus-visible,.ticks button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
@@ -181,7 +180,6 @@
 <div class="progress" id="prog"></div>
 <div class="deck" id="deck"></div>
 <div class="ticks" id="ticks" aria-hidden="true"></div>
-<div class="counter" id="counter">01 / 27</div>
 <nav class="nav" aria-label="Навигация по слайдам">
   <button id="prev" aria-label="Предыдущий слайд">↑</button>
   <button id="next" aria-label="Следующий слайд">↓</button>
@@ -263,7 +261,7 @@ slides.push({cls:"dark",html:`<div class="inner hero">
   <div class="big anim">ГСК<br>технологии</div>
   <div class="sub anim">Промышленная водоподготовка и очистка сточных вод</div>
   <div class="flow"></div>
-  <div class="meta anim">40 лет на рынке · в составе Горно-строительной компании · gsk-tech.ru</div>
+  <div class="meta anim">специалисты с опытом 10–25 лет · в составе Горно-строительной компании · gsk-tech.ru</div>
 </div>`,foot:false});
 
 // 2 О компании
@@ -272,10 +270,10 @@ slides.push({cls:"white",eyebrow:"Кто мы",title:"О компании",html:
   <div class="cols-6-5">
     <div class="anim">
       <p class="lead">Инжиниринговая компания полного цикла в промышленной водоподготовке и очистке сточных вод. Собственное производство, аттестованная лаборатория и проектный штат. Технологическое ядро — баромембранные технологии.</p>
-      <p class="muted" style="margin-top:20px">Основана в 1985 году. В 2026-м вошла в состав Горно-строительной компании и продолжает работу под брендом «ГСК технологии».</p>
+      <p class="muted" style="margin-top:20px">Основана в 1985 году, в 2026-м вошла в состав Горно-строительной компании. Инженеры и технологи компании работают в отрасли по 10–25 лет.</p>
     </div>
     <div class="ribbon anim">
-      ${[["40","лет на рынке"],["5000","внедрённых установок"],["500","сотрудников"],["28 000 м²","производственных площадей"]].map(s=>`<div class="cell stat"><div class="num">${s[0]}</div><div class="lab">${s[1]}</div></div>`).join("")}
+      ${[["10–25","лет опыта у специалистов в отрасли"],["5000","внедрённых установок"],["500","сотрудников"],["28 000 м²","производственных площадей"]].map(s=>`<div class="cell stat"><div class="num">${s[0]}</div><div class="lab">${s[1]}</div></div>`).join("")}
     </div>
   </div></div>`});
 
@@ -468,14 +466,12 @@ const sections=[...document.querySelectorAll('.slide')];
 const ticks=document.getElementById('ticks');
 sections.forEach((_,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','Слайд '+(i+1));b.onclick=()=>sections[i].scrollIntoView();ticks.appendChild(b);});
 const tickBtns=[...ticks.children];
-const counter=document.getElementById('counter');
 const prog=document.getElementById('prog');
 let cur=0;
 const io=new IntersectionObserver(es=>{es.forEach(e=>{
   if(e.isIntersecting){e.target.classList.add('in');
     cur=+e.target.dataset.i;
     tickBtns.forEach((b,i)=>b.classList.toggle('on',i===cur));
-    counter.textContent=String(cur+1).padStart(2,'0')+' / 27';
     prog.style.width=((cur+1)/sections.length*100)+'%';
   }})},{threshold:.55});
 sections.forEach(s=>io.observe(s));

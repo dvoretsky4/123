@@ -93,7 +93,7 @@ function card(slide, x, y, w, h) {
   s.addText("Промышленная водоподготовка и очистка сточных вод", {
     x: ML, y: 3.85, w: 11, h: 0.6, fontFace: BF, fontSize: 22, color: LIGHT, margin: 0,
   });
-  s.addText("ранее ООО «БМТ»  ·  40 лет на рынке", {
+  s.addText("ранее ООО «БМТ»  ·  специалисты с опытом 10–25 лет", {
     x: ML, y: 4.55, w: 11, h: 0.45, fontFace: BF, fontSize: 15, color: STEEL, charSpacing: 1, margin: 0,
   });
   s.addText("gsk-tech.ru", {
@@ -110,11 +110,11 @@ function card(slide, x, y, w, h) {
   s.addText(
     "Инжиниринговая компания полного цикла в промышленной водоподготовке и очистке сточных вод. Собственное производство, аттестованная лаборатория и проектный штат. Технологическое ядро — баромембранные технологии.",
     { x: ML, y: 1.7, w: 6.4, h: 2.4, fontFace: BF, fontSize: 17, color: DARK, valign: "top", margin: 0, lineSpacingMultiple: 1.3 });
-  s.addText("Основана в 1985 году. В 2026-м вошла в состав Горно-строительной компании.", {
-    x: ML, y: 4.5, w: 6.4, h: 1, fontFace: BF, fontSize: 14, italic: true, color: STEEL, valign: "top", margin: 0, lineSpacingMultiple: 1.25 });
+  s.addText("Основана в 1985 году, в 2026-м вошла в состав Горно-строительной компании. Инженеры и технологи работают в отрасли по 10–25 лет.", {
+    x: ML, y: 4.5, w: 6.4, h: 1.4, fontFace: BF, fontSize: 14, italic: true, color: STEEL, valign: "top", margin: 0, lineSpacingMultiple: 1.25 });
   // right ribbon: 4 stats
   const rx = 7.7, rw = 5.03;
-  const cells = [["40", "лет на рынке"], ["5000", "внедрённых установок"], ["500", "сотрудников"], ["28 000 м²", "производственных площадей"]];
+  const cells = [["10–25", "лет опыта у специалистов"], ["5000", "внедрённых установок"], ["500", "сотрудников"], ["28 000 м²", "производственных площадей"]];
   card(s, rx, 1.6, rw, 5.0);
   let cy = 1.6, ch = 5.0 / 4;
   cells.forEach((c, i) => {
