@@ -1,0 +1,491 @@
+<title>ГСК технологии — промышленная водоподготовка и очистка сточных вод</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ГСК технологии (ранее ООО «БМТ») — инжиниринговая компания полного цикла в промышленной водоподготовке и очистке сточных вод. 40 лет, 5000 установок, баромембранные технологии.">
+<style>
+  /* ============ TOKENS — brand-locked industrial monochrome ============ */
+  :root{
+    --blue:#2C4157;      /* primary ink */
+    --deep:#1E2E3E;      /* dark ground */
+    --steel:#7C8D9C;     /* secondary */
+    --line:#D5DBE1;      /* hairlines */
+    --ground:#EDF0F3;    /* page ground */
+    --surface:#FFFFFF;   /* slide surface */
+    --white:#FFFFFF;
+    --sans:"Roboto Condensed","Arial Narrow","PT Sans Narrow","Helvetica Neue Condensed",Arial,system-ui,sans-serif;
+    --maxw:1180px;
+    color-scheme:light;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    font-family:var(--sans);
+    background:var(--deep);
+    color:var(--blue);
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  /* deliberate single visual world: the deck owns its colors regardless of viewer theme */
+
+  /* ============ DECK / SCROLL ============ */
+  .deck{
+    height:100vh;overflow-y:auto;overflow-x:hidden;
+    scroll-snap-type:y mandatory;
+    background:var(--ground);
+  }
+  .slide{
+    min-height:100vh;width:100%;
+    scroll-snap-align:start;scroll-snap-stop:always;
+    display:flex;align-items:center;justify-content:center;
+    padding:clamp(28px,5vh,64px) clamp(20px,5vw,88px);
+    position:relative;background:var(--ground);
+  }
+  .slide.dark{background:var(--deep);color:var(--white)}
+  .slide.white{background:var(--surface)}
+  .inner{width:100%;max-width:var(--maxw);position:relative;z-index:2}
+
+  /* ============ HEADER — title always top-left, same slot ============ */
+  .eyebrow{
+    font-size:clamp(11px,1vw,13px);letter-spacing:.28em;text-transform:uppercase;
+    color:var(--steel);font-weight:700;margin-bottom:14px;
+  }
+  .slide.dark .eyebrow{color:var(--steel)}
+  h1.title{
+    font-weight:800;line-height:.98;letter-spacing:.005em;text-transform:uppercase;
+    font-size:clamp(30px,4.6vw,58px);text-wrap:balance;color:inherit;
+  }
+  .title.sm{font-size:clamp(26px,3.2vw,40px)}
+  .head{margin-bottom:clamp(24px,4vh,44px)}
+  .rule{height:2px;background:var(--blue);width:64px;margin-top:22px}
+  .slide.dark .rule{background:var(--white)}
+
+  /* ============ TEXT ============ */
+  .lead{font-size:clamp(16px,1.5vw,21px);line-height:1.5;max-width:60ch;color:var(--blue)}
+  .slide.dark .lead{color:var(--line)}
+  .muted{color:var(--steel);font-size:clamp(13px,1.15vw,15px);line-height:1.5}
+  em{font-style:normal;color:var(--steel)}
+
+  ul.list{list-style:none;display:flex;flex-direction:column;gap:12px}
+  ul.list li{display:flex;align-items:flex-start;gap:14px;font-size:clamp(14px,1.35vw,18px);line-height:1.35;color:var(--blue)}
+  ul.list li::before{content:"";width:.44em;height:.44em;background:var(--blue);flex:0 0 auto;margin-top:.42em}
+  .slide.dark ul.list li{color:var(--line)}
+  .slide.dark ul.list li::before{background:var(--white)}
+
+  /* ============ GRID HELPERS ============ */
+  .cols2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,40px);align-items:start}
+  .cols-6-5{display:grid;grid-template-columns:6fr 5fr;gap:clamp(20px,3.4vw,48px);align-items:center}
+  @media (max-width:820px){.cols2,.cols-6-5{grid-template-columns:1fr}}
+
+  /* ============ STAT NUMBERS ============ */
+  .stat .num{font-weight:800;line-height:.9;color:var(--blue);font-variant-numeric:tabular-nums;font-size:clamp(40px,6vw,80px)}
+  .stat .lab{color:var(--steel);font-size:clamp(12px,1.1vw,15px);margin-top:8px;letter-spacing:.02em}
+  .ribbon{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+  .ribbon .cell{padding:20px 0;border-bottom:1px solid var(--line)}
+  .ribbon .cell .num{font-size:clamp(34px,4.4vw,52px)}
+
+  /* ============ CARDS ============ */
+  .card{background:var(--surface);border:1px solid var(--line);padding:clamp(18px,2vw,26px)}
+  .slide.white .card{background:var(--ground)}
+  .card h3{font-size:clamp(15px,1.5vw,19px);text-transform:uppercase;letter-spacing:.06em;color:var(--blue);margin-bottom:8px;font-weight:800}
+  .card p{color:var(--steel);font-size:clamp(12px,1.15vw,15px);line-height:1.4}
+
+  /* ============ VISUAL PANELS (line-art, brand ink) ============ */
+  .viz{color:var(--blue);width:100%;background:var(--surface);border:1px solid var(--line);
+       display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .slide.white .viz{background:var(--ground)}
+  .viz svg{width:100%;height:100%;display:block}
+  .viz .cap{position:absolute}
+  .vwrap{position:relative}
+  .vcap{position:absolute;left:16px;bottom:12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
+
+  /* ============ CYCLE (slide 4) ============ */
+  .cycle{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:10px}
+  @media (max-width:820px){.cycle{grid-template-columns:repeat(2,1fr);gap:20px}}
+  .node{text-align:left}
+  .node .dot{width:clamp(58px,6vw,84px);height:clamp(58px,6vw,84px);border-radius:50%;background:var(--blue);color:var(--white);
+             display:flex;align-items:center;justify-content:center;font-weight:800;font-size:clamp(22px,2.4vw,32px);margin-bottom:14px}
+  .node .t{font-size:clamp(12px,1.15vw,15px);line-height:1.25;color:var(--blue)}
+
+  /* ============ TECH CHAIN ============ */
+  .chain{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;margin-top:8px}
+  .chain .b{flex:1;min-width:120px;border:1px solid var(--line);background:var(--surface);padding:12px 10px;text-align:center;font-size:13px;color:var(--blue);display:flex;align-items:center;justify-content:center}
+  .slide.white .chain .b{background:var(--ground)}
+  .chain .b.on{background:var(--blue);color:var(--white);border-color:var(--blue);font-weight:700}
+  .chain .arw{display:flex;align-items:center;color:var(--steel);font-size:18px}
+
+  /* ============ PROJECT ROWS ============ */
+  .prow{display:grid;grid-template-columns:auto 1fr;gap:8px 26px;border-top:1px solid var(--line);padding:14px 0}
+  .prow .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);padding-top:3px;white-space:nowrap}
+  .prow .v{font-size:clamp(14px,1.35vw,17px);color:var(--blue);line-height:1.3}
+  .keyfig{display:flex;align-items:baseline;gap:16px;margin-top:18px;border-top:2px solid var(--blue);padding-top:14px}
+  .keyfig .kn{font-weight:800;font-size:clamp(30px,4vw,46px);color:var(--blue);font-variant-numeric:tabular-nums;line-height:1}
+  .keyfig .kl{color:var(--steel);font-size:13px}
+
+  /* ============ LOGO GRID ============ */
+  .logos{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+  @media (max-width:820px){.logos{grid-template-columns:repeat(2,1fr)}}
+  .logos .lg{border:1px solid var(--line);background:var(--surface);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;
+             text-align:center;padding:8px;font-weight:700;letter-spacing:.03em;color:var(--blue);font-size:clamp(12px,1.15vw,15px);text-transform:uppercase}
+
+  /* ============ START STEPS ============ */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,26px)}
+  @media (max-width:820px){.steps{grid-template-columns:1fr}}
+  .step .n{font-weight:800;font-size:clamp(40px,5vw,64px);color:var(--blue);line-height:.9;font-variant-numeric:tabular-nums}
+  .step .d{margin-top:16px;font-size:clamp(14px,1.35vw,17px);line-height:1.4;color:var(--blue)}
+  .step{border-top:2px solid var(--blue);padding-top:16px}
+
+  /* ============ CONTACTS ============ */
+  .creq{display:flex;flex-direction:column;gap:20px}
+  .creq .r .k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--steel);margin-bottom:4px}
+  .creq .r .v{font-size:clamp(18px,2vw,26px);color:var(--white)}
+  .qr{width:clamp(120px,16vw,190px);height:clamp(120px,16vw,190px);background:var(--white);display:flex;align-items:center;justify-content:center;color:var(--blue);font-weight:800;font-size:28px}
+
+  /* ============ SLIDE FOOTER ============ */
+  .sfoot{position:absolute;left:clamp(20px,5vw,88px);right:clamp(20px,5vw,88px);bottom:clamp(18px,3vh,30px);
+         display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.16em;color:var(--steel);z-index:2}
+  .slide.dark .sfoot{color:var(--steel)}
+  .brandmark{display:flex;align-items:center;gap:9px;text-transform:uppercase;font-weight:700}
+  .brandmark .m{width:16px;height:16px;border:2px solid currentColor;border-radius:4px;position:relative}
+  .brandmark .m::after{content:"";position:absolute;inset:4px;background:currentColor;border-radius:50%}
+
+  /* ============ TITLE SLIDE ============ */
+  .hero .kicker{font-size:clamp(12px,1.2vw,15px);letter-spacing:.24em;color:var(--steel);text-transform:uppercase;margin-bottom:20px}
+  .hero .big{font-weight:800;text-transform:uppercase;line-height:.92;letter-spacing:.01em;font-size:clamp(46px,9vw,120px);color:var(--white)}
+  .hero .sub{font-size:clamp(17px,2vw,26px);color:var(--line);margin-top:22px;max-width:24ch}
+  .hero .meta{font-size:clamp(13px,1.2vw,16px);color:var(--steel);margin-top:16px;letter-spacing:.04em}
+  .flow{height:2px;background:linear-gradient(90deg,var(--white),transparent);margin-top:34px;transform-origin:left;animation:draw 1.1s ease forwards}
+  @keyframes draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  @media (prefers-reduced-motion:reduce){.flow{animation:none}}
+
+  /* ============ ENTER MOTION ============ */
+  .anim{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .slide.in .anim{opacity:1;transform:none}
+  .slide.in .anim:nth-child(2){transition-delay:.06s}
+  .slide.in .anim:nth-child(3){transition-delay:.12s}
+  @media (prefers-reduced-motion:reduce){.anim{opacity:1;transform:none;transition:none}}
+
+  /* ============ CHROME: progress, ticks, nav ============ */
+  .progress{position:fixed;top:0;left:0;height:3px;background:var(--blue);width:0;z-index:50;transition:width .2s ease}
+  .ticks{position:fixed;right:14px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:6px;z-index:50}
+  .ticks button{width:16px;height:2px;border:0;padding:0;background:var(--steel);opacity:.5;cursor:pointer;transition:.2s}
+  .ticks button.on{opacity:1;width:26px;background:var(--blue)}
+  .slide.dark ~ .ticks{}
+  .counter{position:fixed;left:18px;bottom:16px;z-index:50;font-size:12px;letter-spacing:.14em;color:var(--steel);font-variant-numeric:tabular-nums;pointer-events:none;mix-blend-mode:difference;color:#8899a6}
+  .nav{position:fixed;right:18px;bottom:16px;z-index:50;display:flex;gap:8px}
+  .nav button{width:40px;height:40px;border:1px solid var(--steel);background:rgba(255,255,255,.7);color:var(--blue);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:.15s;backdrop-filter:blur(4px)}
+  .nav button:hover{background:var(--blue);color:var(--white);border-color:var(--blue)}
+  .nav button:focus-visible,.ticks button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+  @media (max-width:640px){.ticks{display:none}}
+</style>
+
+<div class="progress" id="prog"></div>
+<div class="deck" id="deck"></div>
+<div class="ticks" id="ticks" aria-hidden="true"></div>
+<div class="counter" id="counter">01 / 27</div>
+<nav class="nav" aria-label="Навигация по слайдам">
+  <button id="prev" aria-label="Предыдущий слайд">↑</button>
+  <button id="next" aria-label="Следующий слайд">↓</button>
+</nav>
+
+<script>
+/* ---------------- line-art visual panels (brand ink, currentColor) ---------------- */
+const V = {
+  membrane(){return `<svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="1.4">
+    <rect x="30" y="40" width="340" height="220" opacity=".5"/>
+    ${Array.from({length:9},(_,i)=>`<rect x="${52+i*36}" y="60" width="20" height="180" rx="10"/>`).join("")}
+    <line x1="30" y1="150" x2="10" y2="150" stroke-width="2"/><line x1="370" y1="150" x2="390" y2="150" stroke-width="2"/>
+    <circle cx="10" cy="150" r="5" fill="currentColor"/><circle cx="390" cy="150" r="5" fill="currentColor"/></svg>`},
+  tanks(){return `<svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="1.4">
+    <line x1="20" y1="250" x2="380" y2="250" stroke-width="2"/>
+    ${[70,160,250,330].map((x,i)=>{const w=[70,70,60,44][i],h=[150,120,150,90][i];return `<ellipse cx="${x}" cy="${250-h}" rx="${w/2}" ry="12"/><path d="M${x-w/2} ${250-h} V245 a${w/2} 12 0 0 0 ${w} 0 V${250-h}"/><ellipse cx="${x}" cy="245" rx="${w/2}" ry="12" opacity=".4"/>`}).join("")}
+    <path d="M20 250 h360" opacity="0"/></svg>`},
+  pipeline(){return `<svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="1.6">
+    <path d="M20 150 H120 M180 150 H260 M300 150 H380"/>
+    <circle cx="150" cy="150" r="26"/><path d="M138 150 h24 M150 138 v24"/>
+    <rect x="262" y="126" width="34" height="48"/><path d="M262 150 h34"/>
+    <ellipse cx="55" cy="150" rx="18" ry="30" opacity=".5"/>
+    <path d="M300 150 l14 -9 v18 z" fill="currentColor" stroke="none"/>
+    <path d="M120 150 l14 -9 v18 z" fill="currentColor" stroke="none"/></svg>`},
+  section(){return `<svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="1.4">
+    <line x1="10" y1="150" x2="390" y2="150" stroke-width="2"/>
+    <rect x="60" y="80" width="150" height="70"/><path d="M60 80 h150 M135 80 v70"/>
+    <rect x="250" y="96" width="90" height="54" rx="4"/><path d="M250 120 h90"/>
+    ${[40,80,120,160].map(x=>`<line x1="${x}" y1="150" x2="${x}" y2="235"/><path d="M${x-6} 235 h12"/>`).join("")}
+    <path d="M220 150 l20 60 h70 l20 -60" opacity=".55"/>
+    <circle cx="290" cy="205" r="24" opacity=".5"/></svg>`},
+  lab(){return `<svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="1.4">
+    <line x1="20" y1="235" x2="380" y2="235" stroke-width="2"/>
+    <path d="M70 150 l-18 70 a4 4 0 0 0 4 6 h28 a4 4 0 0 0 4 -6 z"/><line x1="60" y1="185" x2="80" y2="185"/>
+    <path d="M150 150 l-22 70 a4 4 0 0 0 4 6 h36 a4 4 0 0 0 4 -6 z"/><line x1="135" y1="188" x2="163" y2="188"/>
+    <rect x="230" y="120" width="110" height="115" opacity=".5"/>
+    ${[0,1,2].map(r=>`<line x1="230" y1="${150+r*28}" x2="340" y2="${150+r*28}" opacity=".5"/>`).join("")}
+    ${[250,278,306,334].map(x=>`<line x1="${x}" y1="120" x2="${x}" y2="235" opacity=".5"/>`).join("")}
+    <circle cx="70" cy="140" r="4" fill="currentColor"/><circle cx="150" cy="140" r="4" fill="currentColor"/></svg>`},
+  cabinet(){return `<svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="1.4">
+    <rect x="120" y="40" width="160" height="220"/><rect x="138" y="60" width="124" height="60" opacity=".5"/>
+    ${Array.from({length:12},(_,i)=>`<rect x="${146+(i%4)*30}" y="${140+Math.floor(i/4)*30}" width="16" height="16" rx="3"/>`).join("")}
+    <line x1="120" y1="40" x2="120" y2="260" stroke-width="2"/><circle cx="270" cy="150" r="4" fill="currentColor"/></svg>`},
+  map(){const pts=[[300,120,"Норильск"],[250,210,"Байкальск"],[120,120,"Североуральск"],[70,150,"Владимир"],[60,140,"Лен. обл."],[95,175,"Тула"],[260,175,"Иркутск"],[85,205,"Волгоград"]];
+    return `<svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="1">
+    ${[80,140,200,260].map(y=>`<path d="M20 ${y} Q200 ${y-22} 380 ${y}" opacity=".28"/>`).join("")}
+    ${[70,140,210,280,350].map(x=>`<path d="M${x} 60 Q${x+14} 160 ${x} 260" opacity=".28"/>`).join("")}
+    ${pts.map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="4.5" fill="currentColor" stroke="none"/><circle cx="${p[0]}" cy="${p[1]}" r="10" opacity=".4"/>`).join("")}
+    </svg>`},
+  science(){return `<svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="1.4">
+    <path d="M120 70 h160 v40 l-50 40 v70 h-60 v-70 l-50 -40 z" opacity=".55"/>
+    <circle cx="200" cy="150" r="6" fill="currentColor" stroke="none"/>
+    ${[0,1,2,3,4].map(i=>{const a=i/5*6.283;return `<circle cx="${200+Math.cos(a)*70}" cy="${150+Math.sin(a)*70}" r="4" fill="currentColor" stroke="none"/><line x1="200" y1="150" x2="${200+Math.cos(a)*70}" y2="${150+Math.sin(a)*70}" opacity=".4"/>`}).join("")}</svg>`}
+};
+
+/* ---------------- content model ---------------- */
+const IND_WW = ["горнодобывающий и обогатительный комплекс","полигоны твёрдых коммунальных отходов","гальванические производства","металлургия, машиностроение, электроника","предприятия ЖКХ","пищевая промышленность","транспортные предприятия, АЗС, нефтебазы"];
+const IND_WP = ["теплоэнергетика","ликёро-водочное и безалкогольное производство","фармацевтика и парфюмерия","пищевая промышленность и металлургия","электроника и микроэлектроника","нефтегазовая отрасль","химическая, стекольная, гальваника"];
+
+const projects = [
+ {seg:"Промышленные отходы",client:"ООО «Красный Бор»",type:"ОПИ, подбор технологии, ПД и РД, главгосэкспертиза и ГЭЭ",perf:"60 и 220 м³/ч, очистка по 110 показателям",place:"Ленинградская область",year:"2021–2022",kn:"110",kl:"показателей очистки",viz:"tanks"},
+ {seg:"Промышленные отходы",client:"АО «Байкальский ЦБК»",type:"ОПИ, технология, ПД и РД, экспертизы, поставка, ввод",perf:"30 и 100 м³/ч, 32 показателя",place:"Байкальск",year:"2021–2024",kn:"32",kl:"показателя очистки",viz:"tanks"},
+ {seg:"ГОК · рудник «Октябрьский»",client:"ОАО «Уралмеханобр»",type:"НИР, ПД и РД, сопровождение госэкспертизы",perf:"2400 м³/ч",place:"Норильск",year:"2024",kn:"2400",kl:"м³/ч",viz:"section"},
+ {seg:"ГОК · карьерные воды",client:"АО «Боксит Тимана»",type:"ПД, поставка оборудования и реагентов, ПНР",perf:"2500 м³/ч",place:"Республика Коми, Емва",year:"2017–2019",kn:"2500",kl:"м³/ч",viz:"pipeline"},
+ {seg:"Шахтные воды · «Черемуховская»",client:"АО «СУБР»",type:"ПД и реконструкция очистных сооружений шахты",perf:"рост с 800 до 3000 м³/ч",place:"Североуральск",year:"2017–2020",kn:"800→3000",kl:"м³/ч",viz:"section"},
+ {seg:"ГОК · шахтные и карьерные воды",client:"ПАО «ГМК «Норильский никель»",type:"Очистка вод рудника «Ангидрит» и карьера «Кайерканский»",perf:"170 и 1000 м³/ч",place:"Норильск",year:"2016–2018",kn:"1000",kl:"м³/ч, карьерные воды",viz:"pipeline"},
+ {seg:"Химия · карбонат лития",client:"ООО «Иркутская химическая компания»",type:"Технология получения карбоната лития из гидроминерального сырья, ПД и РД, поставка",perf:"53 м³/ч",place:"Иркутск",year:"с 2023",kn:"Li₂CO₃",kl:"из гидроминерального сырья",viz:"pipeline"},
+ {seg:"Гальваника · замкнутый цикл",client:"АО «Щегловский вал»",type:"ПД, поставка, ПНР; замкнутый водооборот",perf:"3,5 м³/ч",place:"Тула",year:"2014",kn:"0",kl:"сброс — замкнутый водооборот",viz:"cabinet"},
+ {seg:"Водоподготовка",client:"ООО «НьюБио»",type:"Установка водоподготовки для глубокой переработки зерна кукурузы",perf:"100 м³/ч",place:"Волгоградская область",year:"2019",kn:"100",kl:"м³/ч",viz:"membrane"}
+];
+
+const li = a=>`<ul class="list">${a.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+const vpanel=(fn,cap,h="min(52vh,460px)")=>`<div class="vwrap anim" style="height:${h}"><div class="viz" style="height:100%">${V[fn]()}</div><span class="vcap">${cap}</span></div>`;
+
+const slides=[];
+// 1 TITLE
+slides.push({cls:"dark",html:`<div class="inner hero">
+  <div class="kicker anim">ранее ООО «БМТ» · основана в 1985</div>
+  <div class="big anim">ГСК<br>технологии</div>
+  <div class="sub anim">Промышленная водоподготовка и очистка сточных вод</div>
+  <div class="flow"></div>
+  <div class="meta anim">40 лет на рынке · в составе Горно-строительной компании · gsk-tech.ru</div>
+</div>`,foot:false});
+
+// 2 О компании
+slides.push({cls:"white",eyebrow:"Кто мы",title:"О компании",html:`<div class="inner">
+  <div class="head anim"><div class="eyebrow">Кто мы</div><h1 class="title">О компании</h1><div class="rule"></div></div>
+  <div class="cols-6-5">
+    <div class="anim">
+      <p class="lead">Инжиниринговая компания полного цикла в промышленной водоподготовке и очистке сточных вод. Собственное производство, аттестованная лаборатория и проектный штат. Технологическое ядро — баромембранные технологии.</p>
+      <p class="muted" style="margin-top:20px">Основана в 1985 году. В 2026-м вошла в состав Горно-строительной компании и продолжает работу под брендом «ГСК технологии».</p>
+    </div>
+    <div class="ribbon anim">
+      ${[["40","лет на рынке"],["5000","внедрённых установок"],["500","сотрудников"],["28 000 м²","производственных площадей"]].map(s=>`<div class="cell stat"><div class="num">${s[0]}</div><div class="lab">${s[1]}</div></div>`).join("")}
+    </div>
+  </div></div>`});
+
+// 3 Группа
+slides.push({cls:"white",html:`<div class="inner">
+  <div class="head anim"><div class="eyebrow">Позиционирование</div><h1 class="title">В составе группы ГСК</h1><div class="rule"></div></div>
+  <div class="cols2 anim">
+    <div class="card"><h3>Технологии воды</h3>${li(["обследование и подбор технологии","проектирование очистных сооружений","производство оборудования","монтаж и пусконаладка","сервис и поставка расходников"])}</div>
+    <div class="card"><h3>Строительная часть группы</h3>${li(["земляные работы и котлованы","ограждения котлованов","свайные основания","подземные сооружения","монолитные конструкции"])}</div>
+  </div>
+  <div class="anim" style="margin-top:26px;background:var(--blue);color:#fff;padding:22px 26px;font-weight:700;font-size:clamp(16px,2vw,24px);text-transform:uppercase;letter-spacing:.02em;text-align:center">
+    Один договор · Один генподрядчик · Одна ответственность за сроки</div>
+</div>`});
+
+// 4 Цикл
+slides.push({cls:"white",html:`<div class="inner">
+  <div class="head anim"><div class="eyebrow">Что умеем</div><h1 class="title">Полный цикл услуг</h1><div class="rule"></div></div>
+  <div class="cycle anim">
+    ${["Экологическое обследование","Разработка технологических решений","Проектирование очистных сооружений","Производство оборудования","Монтаж и пусконаладка","Сервис и постгарантийное обслуживание"].map((t,i)=>`<div class="node"><div class="dot">${i+1}</div><div class="t">${t}</div></div>`).join("")}
+  </div>
+  <p class="muted anim" style="margin-top:30px;font-size:clamp(15px,1.6vw,20px);color:var(--steel)">От отбора пробы до сервиса — в одних руках.</p>
+</div>`});
+
+// 5 очистка стоков
+slides.push({cls:"white",html:`<div class="inner">
+  <div class="head anim"><div class="eyebrow">Направление 01</div><h1 class="title">Очистка сточных вод</h1><div class="rule"></div></div>
+  <div class="cols-6-5">
+    <div class="anim"><p class="lead" style="margin-bottom:22px">Разработка технологий и изготовление оборудования для очистки промышленных и хозяйственно-бытовых сточных вод.</p>${li(IND_WW)}</div>
+    ${vpanel("tanks","Резервуарный парк · очистка стоков")}
+  </div></div>`});
+
+// 6 водоподготовка
+slides.push({cls:"white",html:`<div class="inner">
+  <div class="head anim"><div class="eyebrow">Направление 02</div><h1 class="title">Промышленная водоподготовка</h1><div class="rule"></div></div>
+  <div class="cols-6-5">
+    ${vpanel("membrane","Мембранный зал · обратный осмос")}
+    <div class="anim"><p class="lead" style="margin-bottom:22px">Разработка технологий и производство оборудования для получения обессоленной воды для технологических процессов.</p>${li(IND_WP)}</div>
+  </div></div>`});
+
+// 7 технологии
+slides.push({cls:"white",html:`<div class="inner">
+  <div class="head anim"><div class="eyebrow">Методы</div><h1 class="title">Технологии</h1><div class="rule"></div></div>
+  <div class="cols2 anim" style="gap:18px">
+    ${[["Баромембранные","обратный осмос, нанофильтрация, ультра- и микрофильтрация"],["Реагентные","коагуляция, флокуляция, нейтрализация, осаждение металлов"],["Сорбционные и ионообменные","доочистка, умягчение, извлечение компонентов"],["Биологические","удаление органики и биогенных элементов"],["Физические","флотация, отстаивание, фильтрация"],["Обработка осадка","сгущение, обезвоживание на фильтр-прессе"]].map(m=>`<div class="card"><h3>${m[0]}</h3><p>${m[1]}</p></div>`).join("")}
+  </div>
+  <div class="chain anim" style="margin-top:22px">
+    ${["сток","предочистка","мембранный блок","доочистка","обработка осадка","очищенная вода"].map((c,i,a)=>`<div class="b${i===2?" on":""}">${c}</div>${i<a.length-1?'<div class="arw">›</div>':''}`).join("")}
+  </div></div>`});
+
+// 8 НИОКР
+slides.push({cls:"white",html:`<div class="inner">
+  <div class="head anim"><div class="eyebrow">Доказательная база</div><h1 class="title">НИОКР</h1><div class="rule"></div></div>
+  <div class="cols-6-5">
+    <div class="anim"><p class="lead" style="margin-bottom:22px">Технология разрабатывается под конкретный сток, а не подбирается по каталогу. Выполнены сотни исследовательских работ, стендовых и пилотных испытаний, доведённых до аппаратурного оформления на площадках заказчиков.</p>${li(["фундаментальные и прикладные исследования","апробирование технологий","стендовые и пилотные испытания","внедрение и серийное оформление"])}</div>
+    ${vpanel("science","Пилотные испытания на площадке заказчика")}
+  </div></div>`});
+
+// 9 Лаборатория
+slides.push({cls:"white",html:`<div class="inner">
+  <div class="head anim"><div class="eyebrow">Доказательная база</div><h1 class="title">Лаборатория</h1><div class="rule"></div></div>
+  <div class="cols-6-5">
+    ${vpanel("lab","Аналитическая лаборатория")}
+    <div class="anim">
+      <p class="lead">Аттестованная аналитическая лаборатория. Анализ пробы заказчика проводится <strong>до заключения договора</strong> — технология подбирается по фактическому составу воды.</p>
+      <div class="card" style="margin-top:22px;display:flex;align-items:center;gap:18px"><div class="num" style="font-weight:800;font-size:clamp(38px,5vw,58px);color:var(--blue)">80+</div><div class="muted">показателей<br>химического анализа</div></div>
+      <div class="card" style="margin-top:12px"><h3 style="margin-bottom:4px">Аттестат аккредитации</h3><p>номер и срок действия — актуальные на дату выпуска</p></div>
+    </div>
+  </div></div>`});
+
+// 10 Проектирование
+slides.push({cls:"white",html:`<div class="inner">
+  <div class="head anim"><div class="eyebrow">Допуски</div><h1 class="title">Проектирование</h1><div class="rule"></div></div>
+  <div class="cols-6-5">
+    <div class="anim"><p class="lead" style="margin-bottom:20px">Проектная документация по составу, установленному Постановлением Правительства № 87. Собственный проектный штат, опыт прохождения государственных экспертиз.</p>
+    ${li(["технологические и архитектурно-строительные решения, инженерные сети","мероприятия по охране окружающей среды, сметная документация","членство в СРО на проект, СМР и изыскания","ГИПы в Национальном реестре специалистов","опыт главгосэкспертизы и государственной экологической экспертизы"])}</div>
+    <div class="anim" style="display:flex;flex-direction:column;gap:12px">
+      ${["СРО · Проектирование","СРО · СМР","СРО · Изыскания"].map(t=>`<div class="card" style="text-align:center;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--blue)">${t}</div>`).join("")}
+    </div>
+  </div></div>`});
+
+// 11 Производство
+slides.push({cls:"white",html:`<div class="inner">
+  <div class="head anim"><div class="eyebrow">Своё оборудование</div><h1 class="title">Производство</h1><div class="rule"></div></div>
+  <div class="cols-6-5">
+    <div class="anim">
+      <p class="lead" style="margin-bottom:22px">Собственные цеха. Оборудование изготавливается, а не перепродаётся. Система менеджмента качества ISO 9001.</p>
+      <div style="display:flex;gap:34px;margin-bottom:22px">
+        <div class="stat"><div class="num" style="font-size:clamp(30px,4vw,46px)">28 000 м²</div><div class="lab">производственных площадей</div></div>
+        <div class="stat"><div class="num" style="font-size:clamp(30px,4vw,46px)">2000+</div><div class="lab">единиц оборудования в год</div></div>
+      </div>
+      ${li(["блочно-модульные установки","ёмкостное оборудование","фильтры и мембранные блоки","системы дозирования","шкафы автоматики"])}
+    </div>
+    ${vpanel("cabinet","Шкафы автоматики · сборка")}
+  </div></div>`});
+
+// 12 Сервис
+slides.push({cls:"white",html:`<div class="inner">
+  <div class="head anim"><div class="eyebrow">После отгрузки</div><h1 class="title">Монтаж, пусконаладка, сервис</h1><div class="rule"></div></div>
+  <div class="cols-6-5">
+    <div class="anim"><p class="lead" style="margin-bottom:22px">После отгрузки заказчик не остаётся один. Оборудование выводится на проектные показатели, персонал обучается, поставляются мембраны и реагенты.</p>${li(["СМР и шеф-монтаж","пусконаладка и вывод на проектные показатели","обучение персонала заказчика","регламентное обслуживание","поставка мембран, загрузок и реагентов"])}</div>
+    ${vpanel("pipeline","Монтаж и щит управления")}
+  </div></div>`});
+
+// 13 Наука
+slides.push({cls:"white",html:`<div class="inner">
+  <div class="head anim"><div class="eyebrow">Академический вес</div><h1 class="title">Сотрудничество и наука</h1><div class="rule"></div></div>
+  <div class="cols2 anim">
+    <div class="card"><h3>Вузы</h3>${li(["РХТУ им. Д.И. Менделеева","МФТИ","Московский политехнический университет","ИГХТУ","ВлГУ им. Столетовых"])}</div>
+    <div class="card"><h3>Национальные проекты</h3>${li(["«Экология» — программа «Чистая страна»","«Наука и университеты»","совместные НИОКР, практика и обучение студентов"])}</div>
+  </div></div>`});
+
+// 14 География
+slides.push({cls:"white",html:`<div class="inner">
+  <div class="head anim"><div class="eyebrow">Масштаб присутствия</div><h1 class="title">География поставок</h1><div class="rule"></div></div>
+  <div class="cols-6-5">
+    ${vpanel("map","Норильск · Байкальск · Североуральск · Емва · Иркутск · Тула · Волгоград · Лен. область")}
+    <div class="ribbon anim">
+      ${[["50+","объектов очистки стоков в год"],["20+","объектов водоподготовки в год"],["2000+","единиц серийного оборудования в год"]].map(s=>`<div class="cell stat"><div class="num">${s[0]}</div><div class="lab">${s[1]}</div></div>`).join("")}
+    </div>
+  </div></div>`});
+
+// 15 Документы
+slides.push({cls:"white",html:`<div class="inner">
+  <div class="head anim"><div class="eyebrow">Формальный фильтр закупок</div><h1 class="title">Разрешительные документы</h1><div class="rule"></div></div>
+  <div class="cols2 anim" style="gap:14px">
+    ${["Декларация ТР ТС ЕАЭС","ISO 9001 — менеджмент качества","ISO 14001 — экологический менеджмент","Сертификаты на выпускаемую продукцию","Выписки СРО: проект., СМР, изыскания","Аттестат аккредитации лаборатории"].map(d=>`<div class="card" style="display:flex;align-items:center;gap:16px"><div style="flex:0 0 auto;width:34px;height:44px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:9px;letter-spacing:.1em;color:var(--steel)">DOC</div><div style="font-weight:700;color:var(--blue);font-size:clamp(13px,1.3vw,16px)">${d}</div></div>`).join("")}
+  </div>
+  <p class="muted anim" style="margin-top:18px">Документы переоформляются на новое наименование; до завершения действуют в текущем виде под брендом «ГСК технологии (ранее ООО «БМТ»)».</p>
+</div>`});
+
+// 16–24 projects
+projects.forEach(p=>{
+  slides.push({cls:"white",html:`<div class="inner">
+    <div class="head anim"><div class="eyebrow">Проекты · ${p.seg}</div><h1 class="title sm">${p.client}</h1><div class="rule"></div></div>
+    <div class="cols-6-5">
+      <div class="anim">
+        <div class="prow"><div class="k">Тип работ</div><div class="v">${p.type}</div></div>
+        <div class="prow"><div class="k">Производительность</div><div class="v">${p.perf}</div></div>
+        <div class="prow"><div class="k">Место</div><div class="v">${p.place}</div></div>
+        <div class="prow" style="border-bottom:1px solid var(--line)"><div class="k">Год</div><div class="v">${p.year}</div></div>
+        <div class="keyfig"><div class="kn">${p.kn}</div><div class="kl">${p.kl}</div></div>
+      </div>
+      ${vpanel(p.viz,"Объект заказчика")}
+    </div></div>`});
+});
+
+// 25 Нам доверяют
+slides.push({cls:"white",html:`<div class="inner">
+  <div class="head anim"><div class="eyebrow">Социальное доказательство</div><h1 class="title">Нам доверяют</h1><div class="rule"></div></div>
+  <div class="logos anim">
+    ${["Норникель","Ростех","РЖД","СИБУР","Роскосмос","Росатом","ЛУКОЙЛ","СУЭК","Татнефть","Иркутская нефтяная компания","ОАК","Мосэнерго","холдинг «Титан»","Яндекс"].map(l=>`<div class="lg">${l}</div>`).join("")}
+  </div>
+  <p class="muted anim" style="margin-top:16px">По каждому логотипу — договор и согласие на упоминание.</p>
+</div>`});
+
+// 26 Как начать
+slides.push({cls:"white",html:`<div class="inner">
+  <div class="head anim"><div class="eyebrow">Призыв к действию</div><h1 class="title">Как начать работу</h1><div class="rule"></div></div>
+  <div class="steps anim">
+    ${[["01","Вы присылаете протокол анализа воды и требуемые показатели на выходе"],["02","Мы возвращаемся с технологической схемой и предварительной оценкой стоимости"],["03","При необходимости проводим опытно-промышленные испытания на вашей площадке"]].map(s=>`<div class="step"><div class="n">${s[0]}</div><div class="d">${s[1]}</div></div>`).join("")}
+  </div>
+  <p class="muted anim" style="margin-top:28px">Срок ответа — согласованный с коммерческим отделом.</p>
+</div>`});
+
+// 27 Контакты
+slides.push({cls:"dark",foot:false,html:`<div class="inner">
+  <div class="head anim"><div class="eyebrow">Контакты</div><h1 class="title" style="color:#fff">Пришлите пробу воды</h1><div class="rule"></div></div>
+  <div class="cols-6-5">
+    <div class="creq anim">
+      ${[["Юридическое лицо","ООО «ГСК технологии» — ранее ООО «БМТ»"],["Производственная площадка","г. Владимир"],["Сайт","gsk-tech.ru"],["Почта","info@gsk-tech.ru"],["Телефон","+7 …"]].map(r=>`<div class="r"><div class="k">${r[0]}</div><div class="v">${r[1]}</div></div>`).join("")}
+    </div>
+    <div class="anim" style="display:flex;flex-direction:column;align-items:center;gap:14px;justify-self:center">
+      <div class="qr">QR</div><div class="muted" style="color:var(--line)">на сайт компании</div>
+    </div>
+  </div></div>`});
+
+/* ---------------- render ---------------- */
+const deck=document.getElementById('deck');
+slides.forEach((s,i)=>{
+  const el=document.createElement('section');
+  el.className='slide '+(s.cls||'');
+  el.dataset.i=i;
+  let foot=(s.foot===false)?'':`<div class="sfoot"><span class="brandmark"><span class="m"></span>ГСК технологии</span><span>${String(i+1).padStart(2,'0')} / 27</span></div>`;
+  el.innerHTML=s.html+foot;
+  deck.appendChild(el);
+});
+
+/* ---------------- chrome & nav ---------------- */
+const sections=[...document.querySelectorAll('.slide')];
+const ticks=document.getElementById('ticks');
+sections.forEach((_,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','Слайд '+(i+1));b.onclick=()=>sections[i].scrollIntoView();ticks.appendChild(b);});
+const tickBtns=[...ticks.children];
+const counter=document.getElementById('counter');
+const prog=document.getElementById('prog');
+let cur=0;
+const io=new IntersectionObserver(es=>{es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');
+    cur=+e.target.dataset.i;
+    tickBtns.forEach((b,i)=>b.classList.toggle('on',i===cur));
+    counter.textContent=String(cur+1).padStart(2,'0')+' / 27';
+    prog.style.width=((cur+1)/sections.length*100)+'%';
+  }})},{threshold:.55});
+sections.forEach(s=>io.observe(s));
+const go=d=>{const n=Math.max(0,Math.min(sections.length-1,cur+d));sections[n].scrollIntoView();};
+document.getElementById('next').onclick=()=>go(1);
+document.getElementById('prev').onclick=()=>go(-1);
+addEventListener('keydown',e=>{
+  if(['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(1);}
+  if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(-1);}
+  if(e.key==='Home'){e.preventDefault();sections[0].scrollIntoView();}
+  if(e.key==='End'){e.preventDefault();sections[sections.length-1].scrollIntoView();}
+});
+</script>
